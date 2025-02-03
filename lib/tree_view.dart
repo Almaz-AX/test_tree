@@ -65,10 +65,9 @@ class _TreeViewState extends State<TreeView> {
               icon: const Icon(Icons.add),
               onPressed: () {
                 setState(() {
-                  node.children = [
-                    ...node.children,
-                    TreeNode(text: 'Новый элемент')
-                  ];
+                  node.addChild(TreeNode(
+                    text: 'Новый элемент',
+                  ));
                 });
               },
             ),
@@ -86,8 +85,9 @@ class _TreeViewState extends State<TreeView> {
           Padding(
             padding: const EdgeInsets.only(left: 16.0),
             child: Column(
-              children:
-                  node.children.map((child) => _buildNode(child, node)).toList(),
+              children: node.children
+                  .map((child) => _buildNode(child, node))
+                  .toList(),
             ),
           ),
       ],
@@ -99,5 +99,18 @@ class _TreeViewState extends State<TreeView> {
     for (var child in node.children) {
       _updateCheckbox(child, value);
     }
+    final parent = node.parent;
+    if (parent != null) {
+      _updateParentCheckbox(parent);
+    }
   }
+
+  void _updateParentCheckbox(TreeNode node) {
+    bool allChildrenChecked = node.children.every((child) => child.isChecked);
+    node.isChecked = allChildrenChecked;
+    if (node.parent != null) {
+      _updateParentCheckbox(node.parent!);
+    }
+  }
+
 }
