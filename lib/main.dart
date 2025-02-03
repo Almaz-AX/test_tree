@@ -30,7 +30,7 @@ final TreeNode root = TreeNode(
           text: 'Дочерний элемент 2',
           children: [
             TreeNode(text: 'Дочерний элемент 2.1'),
-            TreeNode(text: 'Дочерний элемент 2.1'),
+            TreeNode(text: 'Дочерний элемент 2.2'),
           ],
         ),
         TreeNode(text: 'Дочерний элемент 3'),

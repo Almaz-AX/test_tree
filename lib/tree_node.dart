@@ -24,9 +24,4 @@ class TreeNode {
     children.add(child);
   }
 
-  void printNode() {
-    print('TreeNode ${this.text}');
-    print('Родитель ${this.parent}');
-    print('Дети ${this.children.map((e) => e.text)}');
-  }
 }
