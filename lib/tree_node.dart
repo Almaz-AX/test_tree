@@ -9,19 +9,18 @@ class TreeNode {
     required this.text,
     this.isExpanded = false,
     this.isChecked = false,
-    List<TreeNode> children = const[],
+    List<TreeNode> children = const [],
   }) {
-    this.children.addAll(children);
-    if (this.children.isNotEmpty) {
-      for (var node in this.children) {
-        node.parent = this;
+    if (children.isNotEmpty) {
+      for (var element in children) {
+        addChild(element);
       }
     }
+    
   }
 
   void addChild(TreeNode child) {
     child.parent = this;
     children.add(child);
   }
-
 }
