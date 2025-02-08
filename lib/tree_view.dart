@@ -75,7 +75,7 @@ class _TreeViewState extends State<TreeView> {
               icon: const Icon(Icons.delete),
               onPressed: () {
                 setState(() {
-                  parent.children.remove(node);
+                  parent.removeChild(node);
                 });
               },
             ),
@@ -112,5 +112,4 @@ class _TreeViewState extends State<TreeView> {
       _updateParentCheckbox(node.parent!);
     }
   }
-
 }
