@@ -2,7 +2,7 @@ class TreeNode {
   String text;
   bool isExpanded;
   bool isChecked;
-  List<TreeNode> _children = <TreeNode>[];
+  final List<TreeNode> _children = <TreeNode>[];
   TreeNode? parent;
 
   TreeNode({
