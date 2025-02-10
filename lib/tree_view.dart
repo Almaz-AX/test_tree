@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 import 'tree_node.dart';
@@ -96,9 +97,9 @@ class _TreeViewState extends State<TreeView> {
 
   void _updateCheckbox(TreeNode node, bool value) {
     node.isChecked = value;
-    for (var child in node.children) {
-      _updateCheckbox(child, value);
-    }
+    // for (var child in node.children) {
+    //   _updateCheckbox(child, value);
+    // }
     final parent = node.parent;
     if (parent != null) {
       _updateParentCheckbox(parent);
@@ -106,7 +107,8 @@ class _TreeViewState extends State<TreeView> {
   }
 
   void _updateParentCheckbox(TreeNode node) {
-    bool allChildrenChecked = node.children.every((child) => child.isChecked);
+    // bool allChildrenChecked = node.children.every((child) => child.isChecked);
+    bool allChildrenChecked = node.children.any((child) => child.isChecked);
     node.isChecked = allChildrenChecked;
     if (node.parent != null) {
       _updateParentCheckbox(node.parent!);
